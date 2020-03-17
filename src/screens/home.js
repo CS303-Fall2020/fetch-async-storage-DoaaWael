@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, FlatList, Alert, TouchableWithoutFeedback, Keyboard, Modal, AsyncStorage, ActivityIndicator } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Modal,
+  AsyncStorage,
+  ActivityIndicator,
+} from 'react-native'
 import { globalStyles } from '../styles/global'
 import { MaterialIcons } from '@expo/vector-icons'
 import ReviewForm from './reviewForm'
 import TodoItems from '../components/todoItems'
 import axios from 'axios';
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import FlatButton from '../shared/button';
+import FlatButton from '../shared/button'
 
 
 
@@ -20,11 +31,11 @@ export default function Home({ navigation }) {
 
   const [addModalOpen, setAddModelOpen] = useState(false);
 
-  useEffect(()=>{
-    saveData();
+  useEffect(() => {
+    loadData();
   }, [])
 
-  const saveData = () => {
+  const loadData = () => {
     setloading(false);
     setOffline(false);
     axios.get('https://my-json-server.typicode.com/DoaaWael/ReactNative/TodoList')
@@ -33,10 +44,10 @@ export default function Home({ navigation }) {
         AsyncStorage.setItem('TodoList', JSON.stringify(res.data));
       })
       ).catch(error => { console.log(error + "Error"), setOffline(true) });
-    
+
   }
 
-  const displayData = async() => {
+  const displayData = async () => {
     try {
       let todoList = await AsyncStorage.getItem('TodoList');
       setTodoes(JSON.parse(todoList));
@@ -132,7 +143,7 @@ export default function Home({ navigation }) {
         </View>
       </View>
       <View style={globalStyles.refresh}>
-        <FlatButton text="Refresh" onPress={displayData} />
+        <FlatButton text="Refresh" onPress={loadData} />
       </View>
     </View >
 
