@@ -8,7 +8,7 @@ import FlatButton from '../shared/button'
 const reviewSchema = yup.object({
     title: yup.string()
         .required()
-        .min(3),
+
 })
 
 export default function AddTodo({ submitHandler }) {

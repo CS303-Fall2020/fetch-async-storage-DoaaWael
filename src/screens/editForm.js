@@ -9,7 +9,7 @@ import FlatButtton from '../shared/button'
 const reviewSchema = yup.object({
     title: yup.string()
         .required()
-        .min(3),
+    .min(3),
 })
 
 export default function EditForm({ funcTodo, item, setModelOpen }) {
@@ -35,7 +35,7 @@ export default function EditForm({ funcTodo, item, setModelOpen }) {
                             value={props.values.title}
                             onBlur={props.handleBlur('title')}
                         />
-                        {/* <Text style={globalStyles.errorText}>{props.touched.title && props.errors.title}</Text> */}
+                        <Text style={globalStyles.errorText}>{props.touched.title && props.errors.title}</Text>
                         <FlatButtton text='submit' onPress={props.handleSubmit} />
                     </View>
                 )}
