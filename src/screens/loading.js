@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, AsyncStorage } from 'react-native'
+import { View, Text, Image, StyleSheet, AsyncStorage, ActivityIndicator } from 'react-native'
 import Home from './home'
 import axios from 'axios';
 
 
 
 
+// type Props = {};
 
-export default function loading({navigation}) {
+export default function loading({ navigation }) {
 
 
     const [Loading, setloading] = useState(false);
@@ -18,9 +19,10 @@ export default function loading({navigation}) {
 
     useEffect(() => {
         saveData();
-        setInterval(()=>{2000})
-        // navigation.navigate('home'), 2000)
-        
+        setInterval(() => {
+            navigation.navigate('Home')
+        }, 3000)
+
     }, [])
 
     const saveData = () => {
@@ -38,8 +40,7 @@ export default function loading({navigation}) {
     return (
 
         <View style={styles.container}>
-
-            {!Loading ? (<View><Text>loading..</Text></View>) : (navigation.navigate('Home'))}
+            <Image style={styles.loadingImage} source={require('../assets/Loading.gif')} />
         </View >
 
 
@@ -51,27 +52,14 @@ export default function loading({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-    },
-    content: {
-        padding: 40,
-        paddingTop: 20,
-        flex: 1,
-    },
-    loading: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 120,
-    },
-    offline: {
-        padding: 14,
-        backgroundColor: '#ddd',
-        textAlign: 'center',
-        justifyContent: 'center',
         alignContent: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }, loadingImage: {
+        borderColor: '#fff',
+        width: 200,
+        height: 200,
 
-    }
-
+    },
 
 })

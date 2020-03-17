@@ -6,10 +6,14 @@ import Header from '../shared/header'
 import Loading from "../screens/loading";
 
 
+
 const screens = {
-    // loading : {
+    // loading: {
     //     screen: Loading,
     //     header: null,
+    //     navigationOptions: () => {
+        
+    //     }
 
     // },
     Home: {

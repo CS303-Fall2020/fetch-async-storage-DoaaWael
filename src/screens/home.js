@@ -10,6 +10,7 @@ import {
   Modal,
   AsyncStorage,
   ActivityIndicator,
+  StatusBar,
 } from 'react-native'
 import { globalStyles } from '../styles/global'
 import { MaterialIcons } from '@expo/vector-icons'
@@ -18,8 +19,6 @@ import TodoItems from '../components/todoItems'
 import axios from 'axios';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import FlatButton from '../shared/button'
-
-
 
 export default function Home({ navigation }) {
 
@@ -101,6 +100,9 @@ export default function Home({ navigation }) {
   return (
 
     <View style={styles.container}>
+      <StatusBar backgroundColor="#4f6d7a"
+        barStyle='light-content'
+      />
       {offline ? (
         <View style={globalStyles.offline}>
           <TouchableOpacity onPress={displayData}>
