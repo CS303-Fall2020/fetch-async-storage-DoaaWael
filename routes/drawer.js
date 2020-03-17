@@ -10,7 +10,6 @@ const RootDrawerNavigator = createDrawerNavigator({
         navigationOptions: {
             drawerLabel: () => null
         }
-
     },
     Home: {
         screen: HomeStack,

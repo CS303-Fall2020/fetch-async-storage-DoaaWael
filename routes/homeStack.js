@@ -3,19 +3,8 @@ import { createStackNavigator } from 'react-navigation-stack'
 import Home from '../screens/home'
 import ReviewDetails from '../screens/reviewDetails'
 import Header from '../shared/header'
-import Loading from "../screens/loading";
-
-
 
 const screens = {
-    // loading: {
-    //     screen: Loading,
-    //     header: null,
-    //     navigationOptions: () => {
-        
-    //     }
-
-    // },
     Home: {
         screen: Home,
         navigationOptions: ({ navigation }) => {
