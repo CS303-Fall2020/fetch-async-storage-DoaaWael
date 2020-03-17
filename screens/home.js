@@ -43,6 +43,7 @@ export default function Home({ navigation }) {
         AsyncStorage.setItem('TodoList', JSON.stringify(res.data));
       })
       ).catch(error => { console.log(error + "Error"), setOffline(true) });
+    displayData();
 
   }
 

@@ -1,58 +1,12 @@
-import React, { useState, useEffect, Component } from 'react'
-import { View, Text, Image, StyleSheet, AsyncStorage, ActivityIndicator } from 'react-native'
-import Home from './home'
-import axios from 'axios';
+import React, { Component } from 'react'
+import { View, Image, StyleSheet } from 'react-native'
 
-
-
-
-// type Props = {};
-
-// export default function loading({ navigation }) {
-
-
-//     const [Loading, setloading] = useState(false);
-
-//     //   const [offline, setOffline] = useState(false);
-
-
-
-//     useEffect(() => {
-//         saveData();
-//         setInterval(() => {
-//             navigation.navigate('Home')
-//         }, 7000)
-
-//     }, [])
-
-//     const saveData = () => {
-//         setloading(false);
-//         // setOffline(false);
-//         axios.get('https://my-json-server.typicode.com/DoaaWael/ReactNative/TodoList')
-//             .then((res => {
-//                 setloading(true);
-//                 AsyncStorage.setItem('TodoList', JSON.stringify(res.data));
-//             })
-//             ).catch(error => { console.log(error + "Error"), setOffline(true) });
-
-//     }
-
-//     return (
-
-//         <View style={styles.container}>
-//             <Image style={styles.loadingImage} source={require('../assets/Loading.gif')} />
-//         </View >
-
-
-//     );
-// }
 
 export default class Welcome extends Component {
 
     constructor() {
         super();
     }
-
 
     componentDidMount() {
 
