@@ -41,6 +41,7 @@ export default function ({ item, pressHandler, deleteHandler }) {
 
 const styles = StyleSheet.create({
     item: {
+        flex: 1,
         padding: 16,
         marginTop: 16,
         borderColor: '#bbb',
@@ -48,15 +49,25 @@ const styles = StyleSheet.create({
         borderStyle: 'dashed',
         borderRadius: 10,
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
+        marginRight: 5,
     },
     itemText: {
+        // flex: 2,
         marginLeft: 10,
+        // marginRight: 10,
         fontSize: 16,
         fontFamily: 'nunito-regular',
     },
     left: {
+        flex: 26,
         flexDirection: 'row',
+    },
+    delete: {
+        flex: 2,
+        marginHorizontal: 5,
+        
     }
 
 })

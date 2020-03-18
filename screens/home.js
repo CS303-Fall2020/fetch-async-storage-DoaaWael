@@ -38,7 +38,7 @@ export default function Home({ navigation }) {
 
     setloading(false);
     setOffline(false);
-    axios.get('https://my-json-server.typicode.com/DoaaWael/ReactNative/TodoLst')
+    axios.get('https://my-json-server.typicode.com/DoaaWael/ReactNative/TodoList')
       .then((res => {
         setloading(true);
         AsyncStorage.setItem('TodoList', JSON.stringify(res.data));
@@ -60,19 +60,19 @@ export default function Home({ navigation }) {
 
   const displayData = async () => {
 
-    if (!onfline) {
-      try {
-        let todoList = await AsyncStorage.getItem('TodoList');
-        setTodoes(JSON.parse(todoList));
-        console.log(todos)
 
-      } catch (error) {
-        setOffline(true);
-        console.log(error);
-      }
+    try {
+      let todoList = await AsyncStorage.getItem('TodoList');
+      setTodoes(JSON.parse(todoList));
+      console.log(todos)
+
+    } catch (error) {
+      setOffline(true);
+      console.log(error);
     }
-
   }
+
+
 
   const addTodo = (todo) => {
     if (todo.title.length > 3) {
