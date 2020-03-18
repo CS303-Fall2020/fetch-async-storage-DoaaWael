@@ -34,34 +34,49 @@ export default function Home({ navigation }) {
     loadData();
   }, [])
 
-  const loadData = () => {
+  const loadData = async () => {
+
     setloading(false);
     setOffline(false);
-    axios.get('https://my-json-server.typicode.com/DoaaWael/ReactNative/TodoList')
+    axios.get('https://my-json-server.typicode.com/DoaaWael/ReactNative/TodoLst')
       .then((res => {
         setloading(true);
         AsyncStorage.setItem('TodoList', JSON.stringify(res.data));
       })
       ).catch(error => { console.log(error + "Error"), setOffline(true) });
+
     displayData();
 
   }
 
-  const displayData = async () => {
+  const updateAll = async () => {
     try {
-      let todoList = await AsyncStorage.getItem('TodoList');
-      setTodoes(JSON.parse(todoList));
-
+      await AsyncStorage.setItem('TodoList', JSON.stringify(todos))
+        .catch(error => { console.log(error + "Error") });
     } catch (error) {
-      setOffline(true);
       console.log(error);
     }
+  }
+
+  const displayData = async () => {
+
+    if (!onfline) {
+      try {
+        let todoList = await AsyncStorage.getItem('TodoList');
+        setTodoes(JSON.parse(todoList));
+        console.log(todos)
+
+      } catch (error) {
+        setOffline(true);
+        console.log(error);
+      }
+    }
+
   }
 
   const addTodo = (todo) => {
     if (todo.title.length > 3) {
       todo.key = Date.now().toString();
-      console.log(todo)
       setTodoes((prevTodos) => {
         return [
           todo,
@@ -82,6 +97,7 @@ export default function Home({ navigation }) {
     setTodoes((prevTodos) => {
       return [item, ...prevTodos.filter(todo => todo.key != key)]
     })
+    // updateAll();
   }
 
   const deleteHandler = (item) => {
@@ -89,13 +105,14 @@ export default function Home({ navigation }) {
     setTodoes((prevTodos) => {
       return [...prevTodos.filter(todo => todo.key != key)];
     })
+    updateAll();
   }
 
   useEffect(() => {
-    if (todos != null && todos.length === 0) {
-      displayData();
-    }
-  })
+
+    let list = todos;
+    // updateAll();
+  }, [todos])
 
 
   return (
@@ -106,7 +123,7 @@ export default function Home({ navigation }) {
       />
       {offline ? (
         <View style={globalStyles.offline}>
-          <TouchableOpacity onPress={displayData}>
+          <TouchableOpacity onPress={loadData}>
             <Text>It seems you are offline. Please tap here or press Refresh when you get connected</Text>
           </TouchableOpacity>
         </View>
@@ -153,8 +170,6 @@ export default function Home({ navigation }) {
 
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {

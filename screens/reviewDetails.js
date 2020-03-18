@@ -30,7 +30,6 @@ export default function ReviewDetails({ navigation }) {
     }, []);
 
 
-
     const storeData = () => {
         setloading(false);
         setOffline(false);
@@ -74,7 +73,6 @@ export default function ReviewDetails({ navigation }) {
         } catch (error) {
             console.log(error);
         }
-        // displayData();
     }
 
     const submitHandler = (title) => {

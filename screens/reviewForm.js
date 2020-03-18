@@ -16,7 +16,7 @@ export default function ReviewForm({ funcTodo }) {
     return (
         <View style={globalStyles.container}>
             <Formik
-                initialValues={{ title: '', body: '', list: [] }}
+                initialValues={{ title: ''}}
                 validationSchema={reviewSchema}
                 onSubmit={(values, actions) => {
                     actions.resetForm();

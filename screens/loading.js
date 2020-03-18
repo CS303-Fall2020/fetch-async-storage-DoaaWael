@@ -12,7 +12,7 @@ export default class Welcome extends Component {
 
         setTimeout(() => {
             this.props.navigation.navigate('Home')
-        }, 2000)
+        }, 5000)
     }
     render() {
         return (
